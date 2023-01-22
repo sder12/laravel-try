@@ -24,7 +24,11 @@ class DatabaseSeeder extends Seeder
         //     DrinkTableSeeder::class,
         // ]);
         $this->call([
+            //prima tecniche perchè nei drink abbiamo le tecniche che
+            //si riferiscono al Technique
+            TechniqueSeed::class,
             DrinkTableSeeder::class,
+
         ]);
     }
 }

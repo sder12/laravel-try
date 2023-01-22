@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('drinks', function (Blueprint $table) {
+            //cambiamo l'engine di default di laravel in InnoDb per mettere cambio col in FK
             $table->engine = 'InnoDB';
             $table->id();
             $table->string('name')->unique();
