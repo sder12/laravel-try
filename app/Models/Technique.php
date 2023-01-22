@@ -10,6 +10,8 @@ class Technique extends Model
 {
     use HasFactory;
     protected $primaryKey = 'code';
+    protected $keyType = 'string';
+    public $incrementing = false;
 
     public function drinks()
     {
