@@ -22,4 +22,5 @@
         </div>
     </div> --}}
     <h1>Dashboard</h1>
+    <a href="{{ route('admin.drinks.index') }}">drinks</a>
 @endsection

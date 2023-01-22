@@ -4,7 +4,10 @@
     <h2>Drinks</h2>
     <ul>
         @foreach ($drinks as $drink)
-            <li>{{ $drink->name }}</li>
+            <li><a href="{{ route('admin.drinks.show', $drink->id) }}">
+                    {{ $drink->name }}
+                </a>
+            </li>
         @endforeach
     </ul>
 @endsection
