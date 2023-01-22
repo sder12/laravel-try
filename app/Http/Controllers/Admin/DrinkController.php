@@ -26,7 +26,7 @@ class DrinkController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.drinks.create');
     }
 
     /**
@@ -37,7 +37,7 @@ class DrinkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //$data = validate([]);
     }
 
     /**
