@@ -10,4 +10,10 @@ class Drink extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'technique'];
+
+    public function technique()
+    {
+        // return $this->belongsTo(Technique::class);
+        return $this->belongsTo(Technique::class, 'technique', 'code');
+    }
 }

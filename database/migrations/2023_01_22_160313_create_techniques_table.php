@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('techniques', function (Blueprint $table) {
             // $table->id();
+            //cambiamo l'engine di default di laravel in InnoDb per mettere cambio col in FK
             $table->engine = 'InnoDB';
             $table->string('code')->primary();
             $table->string('name', 150);
