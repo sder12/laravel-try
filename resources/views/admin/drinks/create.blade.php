@@ -10,9 +10,14 @@
                 <input type="text" id="name" name="name" class="form-control">
             </div>
 
+            {{-- {{ json_encode($techniques) }} --}}
             <div class="mb-3">
-                <label for="technique">Tecnica</label>
-                <input type="text" id="technique" name="technique" class="form-control">
+                <select name="technique" id="technique">
+                    <option value="">Seleziona tecnica</option>
+                    @foreach ($techniques as $tech)
+                        <option value="{{ $tech->code }}"> {{ $tech->name }}</option>
+                    @endforeach
+                </select>
             </div>
 
             <button type="submit" class="btn btn-primary">

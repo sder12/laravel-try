@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Drink;
+use App\Models\Technique;
 use Illuminate\Http\Request;
 
 class DrinkController extends Controller
@@ -26,7 +27,8 @@ class DrinkController extends Controller
      */
     public function create()
     {
-        return view('admin.drinks.create');
+        $techniques = Technique::all();
+        return view('admin.drinks.create', compact('techniques'));
     }
 
     /**
@@ -37,7 +39,13 @@ class DrinkController extends Controller
      */
     public function store(Request $request)
     {
-        //$data = validate([]);
+        // dd($request->all());
+        $data = $request->validate([
+            'name' => ['required', 'unique:drinks', 'max:250'],
+            'technique' => ['required', 'max:250']
+        ]);
+        $drink = Drink::create($data);
+        return redirect()->route('admin.drinks.index')->with('message', "$drink->name è stato creato con successo");
     }
 
     /**
