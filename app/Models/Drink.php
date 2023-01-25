@@ -16,4 +16,9 @@ class Drink extends Model
         // return $this->belongsTo(Technique::class);
         return $this->belongsTo(Technique::class, 'technique', 'code');
     }
+
+    public function ingredients()
+    {
+        return $this->belongsToMany(Ingredient::class);
+    }
 }

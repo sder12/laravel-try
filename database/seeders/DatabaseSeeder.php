@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             //si riferiscono al Technique
             TechniqueSeed::class,
             DrinkTableSeeder::class,
+            IngredientSeeder::class,
 
         ]);
     }

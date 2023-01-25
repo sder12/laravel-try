@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Drink;
+use App\Models\Ingredient;
 use App\Models\Technique;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,8 @@ class DrinkController extends Controller
     public function index()
     {
         $drinks = Drink::all();
-        return view('admin.drinks.index', compact('drinks'));
+        $ingredients = Ingredient::all();
+        return view('admin.drinks.index', compact('drinks', 'ingredients'));
     }
 
     /**
@@ -28,7 +30,9 @@ class DrinkController extends Controller
     public function create()
     {
         $techniques = Technique::all();
-        return view('admin.drinks.create', compact('techniques'));
+        $ingredients = Ingredient::all();
+
+        return view('admin.drinks.create', compact('techniques', 'ingredients'));
     }
 
     /**
@@ -42,9 +46,23 @@ class DrinkController extends Controller
         // dd($request->all());
         $data = $request->validate([
             'name' => ['required', 'unique:drinks', 'max:250'],
-            'technique' => ['required', 'max:250']
+            'technique' => ['required', 'max:250'],
+            'ingredients.*.id' => ['exists:ingredients,id', 'nullable'],
+            'ingredients.*.quantity' => ['nullable'],
         ]);
         $drink = Drink::create($data);
+        // $drink->ingredients()->attach($request->ingredients);
+        foreach ($data['ingredients'] as $ingredient) {
+            if (isset($ingredient['id']) && $ingredient['quantity']) {
+                $drink->ingredients()->attach(
+                    [
+                        $ingredient['id'] => [
+                            'quantity' => $ingredient['quantity']
+                        ]
+                    ]
+                );
+            }
+        }
         return redirect()->route('admin.drinks.index')->with('message', "$drink->name è stato creato con successo");
     }
 
