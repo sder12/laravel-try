@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DrinkController;
+use App\Http\Controllers\BraintreeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,5 +29,8 @@ Route::middleware(['auth', 'verified'])
             ->name('dashboard');
         Route::resource('drinks', DrinkController::class);
     });
+
+
+Route::any('/payment', [BraintreeController::class, 'token'])->name('token')->middleware('auth');
 
 require __DIR__ . '/auth.php';
