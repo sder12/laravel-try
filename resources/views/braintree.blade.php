@@ -28,7 +28,7 @@
 </head>
 
 <body>
-    <div class="py-12">
+    <div class="container mt-5">
         @csrf
         <div id="dropin-container"> </div>
         <div class="btn-style">
