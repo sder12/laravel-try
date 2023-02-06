@@ -35,8 +35,3 @@ class BraintreeController extends Controller
         }
     }
 }
-
-
-
-// try card: 4111 1111 1111 1111
-// expiration: 10/24

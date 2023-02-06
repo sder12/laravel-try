@@ -35,6 +35,13 @@
             <a id="submit-button" class="btn btn-sm btn-success">Submit payment</a>
         </div>
 
+        {{-- DEBUG DATI --}}
+        <div class="text-center mt-5">
+            <span class="fw-bold"> 4111 1111 1111 1111</span>
+            <span> 10/24</span>
+        </div>
+        {{-- DEBUG DATI --}}
+
         <script>
             var button = document.querySelector('#submit-button');
             braintree.dropin.create({

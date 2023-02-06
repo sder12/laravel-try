@@ -1,26 +1,9 @@
 @extends('layouts.admin')
 
 @section('content')
-    {{-- 
-        <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
-
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-                        <h1>Welcome</h1>
-                        {{ __('You are logged in!') }}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-    <h1>Dashboard</h1>
-    <a href="{{ route('admin.drinks.index') }}">drinks</a>
+    <div class="container text-center">
+        <h1>Dashboard</h1>
+        <a href="{{ route('admin.drinks.index') }}" class="btn btn-primary ">drinks</a> <br>
+        <a href="{{ route('token') }}" class="btn btn-danger my-5"> Pay </a>
+    </div>
 @endsection
